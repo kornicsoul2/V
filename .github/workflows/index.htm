@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Simulator Live Preview</title>
+</head>
+<body>
+    <h1>Traffic Simulator Live Preview</h1>
+    <div id="results">
+        <p>Results will appear here after the script runs.</p>
+    </div>
+    <script>
+        // Fetch and display results from GitHub Actions logs
+        fetch('https://api.github.com/repos/kornicsoul2/V/actions/runs')
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+            });
+    </script>
+</body>
+</html>
